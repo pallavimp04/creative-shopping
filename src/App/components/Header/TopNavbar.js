@@ -1,0 +1,58 @@
+import React, { useEffect } from "react";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { fetchAllCategories } from "../../Features/Category/CategorySlice";
+
+function TopNavbar() {
+  const { categories } = useSelector((state) => state.categories);
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+  }, [dispatch]);
+
+  return (
+    <Navbar className={"navbar"} expand="lg">
+      <Container>
+        <NavLink to={"/"} className={"navbar-brand"}>
+          <img
+            style={{ height: "6vh", objectFit: "cover" }}
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/CV_logo.png/960px-CV_logo.png?20220121111049"
+            alt="pure pu ladies bag"
+          />
+          Creative Shopping
+        </NavLink>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            <NavLink to={"/"} className="nav-link">
+              Home
+            </NavLink>
+            <NavDropdown title="Catagories" id="basic-nav-dropdown">
+              {categories &&
+                categories.map((c, index) => {
+                  return (
+                    <Link
+                      to={`/category/${c}`}
+                      className="text-capitalize dropdown-item"
+                      key={index}
+                    >
+                      {c}
+                    </Link>
+                  );
+                })}
+            </NavDropdown>
+            <NavLink to={"/products"} className="nav-link">
+              Products
+            </NavLink>
+            <NavLink to={"/contact"} className="nav-link">
+              Contact
+            </NavLink>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default TopNavbar;
