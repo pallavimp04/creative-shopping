@@ -1,0 +1,40 @@
+.navbar-brand,
+.footer-link {
+  font-family: fantasy;
+  color: rgb(180, 243, 174);
+}
+
+.bg-white {
+  background-color: rgb(173, 173, 173) !important;
+}
+
+.nav-link {
+  font-family: cursive;
+  color: rgb(180, 243, 174);
+}
+
+.navbar,
+.footer {
+  background: radial-gradient(
+    circle,
+    rgb(31, 193, 199) 50%,
+    rgb(216, 167, 177) 100%
+  );
+}
+
+.buy-now,
+.add-cart {
+  width: 100%;
+  background-color: orange;
+  border: none;
+  max-width: 150px !important;
+}
+
+.buy-product-image {
+  max-width: 200px !important;
+  max-height: 200px !important;
+}
+
+.product-body {
+  display: flex;
+}
